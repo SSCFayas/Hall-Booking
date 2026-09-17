@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hall Booking</title>
+<meta name="theme-color" content="#202C54">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Hall Booking">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #F5F7F6; font: 16px system-ui, sans-serif; color: #17262E; }
+  iframe { border: 0; width: 100%; height: 100%; display: block; }
+  #wait { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #F5F7F6; }
+  #wait img { width: 84px; border-radius: 20px; }
+  #wait p { margin: 0; color: #5B6B70; }
+  #wait a { display: none; background: #0E5E4E; color: #fff; padding: 12px 20px; border-radius: 10px; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="wait">
+  <img src="icons/icon-192.png" alt="">
+  <p id="msg">Opening Hall Booking…</p>
+  <a id="direct" href="https://script.google.com/macros/s/AKfycbyL5tr468mGCtLBbFv9JY871xdm_3kKR-zXd6Oe2z__t3UL8Hdci20XVVi4q8MiNaRV/exec">Open the booking page</a>
+</div>
+<iframe id="app" src="https://script.google.com/macros/s/AKfycbyL5tr468mGCtLBbFv9JY871xdm_3kKR-zXd6Oe2z__t3UL8Hdci20XVVi4q8MiNaRV/exec" allow="clipboard-write" title="Hall Booking"></iframe>
+<script>
+  const f = document.getElementById('app'), w = document.getElementById('wait');
+  f.addEventListener('load', () => { w.style.display = 'none'; });
+  // If Google blocks the embed or the network is slow, offer the direct link after 12 s
+  setTimeout(() => {
+    if (w.style.display !== 'none') {
+      document.getElementById('msg').textContent = 'Taking longer than usual.';
+      document.getElementById('direct').style.display = 'inline-block';
+    }
+  }, 12000);
+</script>
+</body>
+</html>
